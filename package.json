@@ -1,0 +1,18 @@
+{
+  "private": true,
+  "name": "cisco-network",
+  "version": "1.0.0",
+  "description": "Cisco Application",
+  "dependencies": {
+    "vis": "^4.18.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.22.1",
+    "copy-webpack-plugin": "^4.0.1",
+    "css-loader": "^0.26.1",
+    "file-loader": "^0.10.0",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^2.2.1"
+  }
+}
