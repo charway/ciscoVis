@@ -47,12 +47,13 @@ module.exports = {
         ]
     },
     plugins: [
-        // new webpack.optimize.UglifyJsPlugin({
-        //     compress: {
-        //         warnings: false
-        //     },
-        //     exclude: /nextFont.js/i
-        // }),
+        new webpack.optimize.UglifyJsPlugin({
+            compress: { warnings: false },
+            output: {//!!!
+                ascii_only: true,
+                quote_keys: true,
+            }
+        }),
         new CopyWebpackPlugin([
             { from: path.resolve('dist/fonts'), to: path.resolve('./example/fonts') }
         ])
