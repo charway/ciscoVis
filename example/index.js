@@ -82,7 +82,7 @@ const clusterOptionsByData = {
         shape: 'icon',
         icon: {
             face: 'Next-font',
-            code: network.nextFont.hostgroup.font[0],
+            code: CiscoVis.nextFont.hostgroup.font[0],
         }
     },
     clusterEdgeProperties: {
