@@ -53,9 +53,6 @@ module.exports = {
                 ascii_only: true,
                 quote_keys: true,
             }
-        }),
-        new CopyWebpackPlugin([
-            { from: path.resolve('dist/fonts'), to: path.resolve('./example/fonts') }
-        ])
+        })
     ]
 }
