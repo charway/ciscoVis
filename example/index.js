@@ -218,6 +218,5 @@ const clusterOptionsByData = {
     clusterEdgeProperties: {
         length: LENGTH_SERVER
     }
-
 };
 network.cluster(clusterOptionsByData);
