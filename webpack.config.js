@@ -36,7 +36,7 @@ module.exports = {
                 }
             }, {
                 test: /\.css$/,
-                loader: 'style-loader!css-loader'
+                use: ['style-loader', 'css-loader', 'postcss-loader']
             }, {
                 test: /\.(png|jpg|gif)$/,
                 loader: 'url-loader?limit=8192&name=img/[hash].[ext]',
