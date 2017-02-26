@@ -4,8 +4,8 @@
 <head>
     <style>
         #visualization {
-            width: 80%;
-            height: 90vh;
+            width: 100%;
+            height: 95vh;
             overflow: hidden;
         }
         
@@ -24,7 +24,180 @@
 
 <body>
     <div id="visualization"></div>
-    <script type="text/javascript" src="index.js"></script>
+    <script type="text/javascript">
+        const nodes = [
+            {
+                id: 1,
+                label: '192.168.0.1',
+                type: 'switch',
+            }, {
+                id: 2,
+                label: '192.168.0.2',
+                type: 'router',
+            }, {
+                id: 3,
+                label: '192.168.0.3',
+                type: 'accesspoint',
+            }, {
+                id: 4,
+                label: '192.168.0.4',
+                type: 'ipphone',
+            }, {
+                id: 5,
+                label: '192.168.0.5',
+                type: 'camera',
+            }, {
+                id: 6,
+                label: '192.168.0.6',
+                type: 'wirelesshost',
+            }, {
+                id: 7,
+                label: '192.168.0.7',
+                type: 'groups',
+            }, {
+                id: 8,
+                label: '192.168.0.8',
+                type: 'groupm',
+            }, {
+                id: 202,
+                label: '192.168.0.202',
+                type: 'firewall',
+            }, {
+                id: 203,
+                label: '192.168.0.203',
+                type: 'server',
+            }, {
+                id: 230,
+                label: '192.168.0.230',
+                type: 'wlc',
+            }, {
+                id: 231,
+                label: '192.168.0.231',
+                type: 'groupl',
+            }, {
+                id: 10,
+                label: '192.168.0.10',
+                type: 'unknown',
+            }, {
+                id: 11,
+                label: '192.168.0.11',
+                type: 'phone',
+            }, {
+                id: 12,
+                label: '192.168.0.12',
+                type: 'nexus5000',
+                greyOut: true,
+            }, {
+                id: 204,
+                label: 'Internet',
+                type: 'cloud',
+                color: '#000000'
+            }
+        ];
+
+        const edges = [
+            {
+                from: 1,
+                to: 2,
+                label: '0.71 mbps',
+            }, {
+                from: 1,
+                to: 3,
+                label: '0.55 mbps'
+            }, {
+                from: 3,
+                to: 202,
+            }, {
+                from: 4,
+                to: 12,
+            }, {
+                from: 5,
+                to: 12,
+            }, {
+                from: 6,
+                to: 2,
+            }, {
+                from: 8,
+                to: 12,
+            }, {
+                from: 7,
+                to: 10,
+            }, {
+                from: 3,
+                to: 230,
+            }, {
+                from: 3,
+                to: 231,
+            }, {
+                from: 1,
+                to: 10,
+                label: '0.92 mbps'
+            }, {
+                from: 10,
+                to: 11,
+                label: '0.68 mbps'
+            }, {
+                from: 1,
+                to: 12,
+                label: '0.3 mbps'
+            }, {
+                from: 1,
+                to: 204,
+                label: '0.63 mbps'
+            }, {
+                from: 1,
+                to: 203,
+                greyOut: true
+            }
+        ];
+
+
+        // type around 2
+        for (let i = 100; i <= 105; i++) {
+            let label = null;
+
+            if (i === 102) {
+                label = 'error';
+            }
+
+            nodes.push({ id: i, label: '192.168.0.' + i, type: 'host', cid: 1 });
+            edges.push({ from: 2, to: i, label: label });
+        }
+
+
+        const network = new CiscoVis.Network('visualization',
+            [{
+                label: 'option 1',
+                callback: (nodeId) => { console.log(nodeId) }
+            }, {
+                label: 'option 2',
+                callback: () => { console.log('2') }
+            }],
+            {
+                nodes,
+                edges
+            }
+        );
+        // network.nodes = nodes;
+        // network.edges = edges;
+
+        network.draw();
+        const clusterOptionsByData = {
+            joinCondition: function (childOptions) {
+                return childOptions.cid == 1;
+            },
+            clusterNodeProperties: {
+                id: 'cidCluster',
+                label: 'hosts',
+                image: CiscoVis.NextFont.createSVG('hosts'),
+                shape: 'image'
+            },
+            clusterEdgeProperties: {
+                //length: LENGTH_SERVER
+            }
+        };
+        network.cluster(clusterOptionsByData);
+    </script>
 </body>
 
 </html>

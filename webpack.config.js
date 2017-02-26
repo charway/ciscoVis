@@ -32,7 +32,7 @@ module.exports = {
                 loader: 'babel-loader',
                 include: path.join(__dirname, 'lib'),
                 query: {
-                    presets: ["es2015"],
+                    presets: ["es2015", "stage-0"],
                 }
             }, {
                 test: /\.css$/,
