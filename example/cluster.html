@@ -1,0 +1,528 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <style>
+        #visualization {
+            width: 80%;
+            height: 90vh;
+            overflow: hidden;
+        }
+        
+        h2 {
+            font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            margin: 20px;
+            font-size: 2rem;
+            font-weight: 500;
+            line-height: 1.1;
+            color: inherit;
+        }
+    </style>
+    <script type="text/javascript" src="../dist/ciscoVis.js"></script>
+
+</head>
+
+<body>
+    <div id="visualization"></div>
+    <script type="text/javascript">
+        const ApicEMJson = {
+            "nodes": [
+                {
+                    "deviceType": "Cisco Catalyst 29xx Stack-able Ethernet Switch",
+                    "label": "test_remote_switch_node",
+                    "ip": "10.0.14.2",
+                    "softwareVersion": "15.2(5)E1",
+                    "nodeType": "device",
+                    "family": "Switches and Hubs",
+                    "platformId": "WS-C2960X-48LPS-L",
+                    "tags": [],
+                    "role": "ACCESS",
+                    "roleSource": "AUTO",
+                    "customParam": {},
+                    "id": "25681b45-d54a-4430-a93c-c339662eaf68"
+                },
+                {
+                    "deviceType": "Cisco Catalyst38xx stack-able ethernet switch",
+                    "label": "DNA_LAB_3850_Core1.dna.com",
+                    "ip": "10.63.54.218",
+                    "softwareVersion": "03.07.04E",
+
+                    "nodeType": "device",
+                    "family": "Switches and Hubs",
+                    "platformId": "WS-C3850-24XU-E",
+                    "tags": [],
+                    "role": "ACCESS",
+                    "roleSource": "AUTO",
+                    "customParam": {},
+                    "id": "2c682ec8-722c-4c1c-acb4-b8fba979e20a"
+                },
+                {
+                    "deviceType": "Cisco 2921 Integrated Services Router G2",
+                    "label": "DNA_LAB_Term_Server.dna.com",
+                    "ip": "10.63.54.224",
+                    "softwareVersion": "15.3(2)T1",
+
+                    "nodeType": "device",
+                    "family": "Routers",
+                    "platformId": "CISCO2921/K9",
+                    "tags": [],
+                    "role": "BORDER ROUTER",
+                    "roleSource": "AUTO",
+                    "customParam": {},
+                    "id": "3e95469f-3002-433a-bf16-2f26780e7842"
+                },
+                {
+                    "deviceType": "Cisco 4321 Integrated Services Router",
+                    "label": "test_remote_gateway_node",
+                    "ip": "10.0.9.2",
+                    "softwareVersion": "15.5(3)S4b",
+
+                    "nodeType": "device",
+                    "family": "Routers",
+                    "platformId": "ISR4321/K9",
+                    "tags": [],
+                    "role": "BORDER ROUTER",
+                    "roleSource": "AUTO",
+                    "customParam": {},
+                    "id": "420bc4e1-5f26-44b0-8368-74ec1053d728"
+                },
+                {
+                    "deviceType": "Cisco Catalyst38xx stack-able ethernet switch",
+                    "label": "DNA_LAB_3850_SW3.dna.com",
+                    "ip": "10.63.54.220",
+                    "softwareVersion": "03.07.04E",
+
+                    "nodeType": "device",
+                    "family": "Switches and Hubs",
+                    "platformId": "WS-C3850-24XS-E",
+                    "tags": [],
+                    "role": "DISTRIBUTION",
+                    "roleSource": "AUTO",
+                    "customParam": {},
+                    "id": "638563f5-c805-44a9-8161-ea225dacedd6"
+                },
+                {
+                    "deviceType": "Cisco 2911 Integrated Services Router G2",
+                    "label": "DNA_LAB_Hub_2911.dna.com",
+                    "ip": "10.63.54.221",
+                    "softwareVersion": "15.5(3)M4a",
+
+                    "nodeType": "device",
+                    "family": "Routers",
+                    "platformId": "CISCO2911/K9",
+                    "tags": [],
+                    "role": "BORDER ROUTER",
+                    "roleSource": "AUTO",
+                    "customParam": {},
+                    "id": "7fed2bdd-2046-4366-8079-9a32b3bd4b5d"
+                },
+                {
+                    "deviceType": "Cisco 2921 Integrated Services Router G2",
+                    "label": "DNA_LAB_SPBB_2921",
+                    "ip": "10.63.54.231",
+                    "softwareVersion": "15.3(2)T1",
+
+                    "nodeType": "device",
+                    "family": "Routers",
+                    "platformId": "CISCO2921/K9",
+                    "tags": [],
+                    "role": "BORDER ROUTER",
+                    "roleSource": "AUTO",
+                    "customParam": {},
+                    "id": "8ccaf057-3f50-4f4c-82e6-f71e24f16d5a"
+                },
+                {
+                    "deviceType": "Cisco Catalyst38xx stack-able ethernet switch",
+                    "label": "DNA_LAB_3850_Core2.dna.com",
+                    "ip": "10.63.54.219",
+                    "softwareVersion": "03.07.04E",
+
+                    "nodeType": "device",
+                    "family": "Switches and Hubs",
+                    "platformId": "WS-C3850-24XS-E",
+                    "tags": [],
+                    "role": "DISTRIBUTION",
+                    "roleSource": "AUTO",
+                    "customParam": {},
+                    "id": "c619342b-da8b-4fcb-acc0-1f38430403cb"
+                },
+                {
+                    "deviceType": "Cisco 4431 Integrated Services Router",
+                    "label": "DNA_LAB_Hub_4431.dna.com",
+                    "ip": "10.0.3.3",
+                    "softwareVersion": "16.3.2",
+
+                    "nodeType": "device",
+                    "family": "Routers",
+                    "platformId": "ISR4431/K9",
+                    "tags": [],
+                    "role": "BORDER ROUTER",
+                    "roleSource": "AUTO",
+                    "customParam": {},
+                    "id": "ca753ecd-ca80-45b9-851d-8a1c68c4cf0d"
+                },
+                {
+                    "deviceType": "Unsupported Cisco Device",
+                    "label": "DNA_LAB_Spoke_NFV.dna.com",
+                    "ip": "10.63.54.230",
+                    "softwareVersion": "16.3.1",
+
+                    "nodeType": "device",
+                    "family": "Unsupported Cisco Device",
+                    "platformId": "ISRV",
+                    "tags": [],
+                    "role": "CORE",
+                    "roleSource": "AUTO",
+                    "customParam": {},
+                    "id": "f2dccaa1-7703-4a46-aee0-bebfe0f93a8d"
+                },
+                {
+                    "deviceType": "wired",
+                    "label": "10.0.2.226",
+                    "ip": "10.0.2.226",
+
+                    "nodeType": "HOST",
+                    "family": "WIRED",
+                    "role": "HOST",
+                    "customParam": {},
+                    "id": "4fb2d0b9-8e07-4d44-aaa9-4737812c5a7d"
+                },
+                {
+                    "deviceType": "wired",
+                    "label": "10.0.2.227",
+                    "ip": "10.0.2.227",
+
+                    "nodeType": "HOST",
+                    "family": "WIRED",
+                    "role": "HOST",
+                    "customParam": {},
+                    "id": "502eba48-3dec-4799-bd3d-a064c56ef53b"
+                },
+                {
+                    "deviceType": "wired",
+                    "label": "10.0.3.2",
+                    "ip": "10.0.3.2",
+
+                    "nodeType": "HOST",
+                    "family": "WIRED",
+                    "role": "HOST",
+                    "customParam": {},
+                    "id": "548225f1-5b97-43a7-918f-1561cf54e6c8"
+                },
+                {
+                    "deviceType": "wired",
+                    "label": "10.0.2.72",
+                    "ip": "10.0.2.72",
+
+                    "nodeType": "HOST",
+                    "family": "WIRED",
+                    "role": "HOST",
+                    "customParam": {},
+                    "id": "636951c1-948d-48bd-880f-9b52be8f82ef"
+                },
+                {
+                    "deviceType": "wired",
+                    "label": "10.0.3.4",
+                    "ip": "10.0.3.4",
+
+                    "nodeType": "HOST",
+                    "family": "WIRED",
+                    "role": "HOST",
+                    "customParam": {},
+                    "id": "6e50bbd7-e596-435d-b107-9e51f9a44af0"
+                },
+                {
+                    "deviceType": "wired",
+                    "label": "10.0.10.2",
+                    "ip": "10.0.10.2",
+
+                    "nodeType": "HOST",
+                    "family": "WIRED",
+                    "role": "HOST",
+                    "customParam": {},
+                    "id": "724766cb-98ec-4dea-a014-9dcc6d46b864"
+                },
+                {
+                    "deviceType": "wired",
+                    "label": "10.0.2.228",
+                    "ip": "10.0.2.228",
+
+                    "nodeType": "HOST",
+                    "family": "WIRED",
+                    "role": "HOST",
+                    "customParam": {},
+                    "id": "755faa27-a657-4236-a92f-e637987607f1"
+                },
+                {
+                    "deviceType": "wired",
+                    "label": "SEPB41489A2F399",
+                    "ip": "10.0.24.3",
+
+                    "nodeType": "HOST",
+                    "family": "WIRED",
+                    "role": "HOST",
+                    "customParam": {},
+                    "id": "7fd4399c-2bd3-488e-b612-e05656c183cc"
+                },
+                {
+                    "deviceType": "wired",
+                    "label": "10.0.2.10",
+                    "ip": "10.0.2.10",
+
+                    "nodeType": "HOST",
+                    "family": "WIRED",
+                    "role": "HOST",
+                    "customParam": {},
+                    "id": "9d1cb6f2-a2a7-461e-9921-1f1416eb1d61"
+                },
+                {
+                    "deviceType": "wired",
+                    "label": "10.0.2.231",
+                    "ip": "10.0.2.231",
+
+                    "nodeType": "HOST",
+                    "family": "WIRED",
+                    "role": "HOST",
+                    "customParam": {},
+                    "id": "a43c5694-17a7-4174-89d5-5afc1132cf9a"
+                },
+                {
+                    "deviceType": "wired",
+                    "label": "10.0.2.204",
+                    "ip": "10.0.2.204",
+
+                    "nodeType": "HOST",
+                    "family": "WIRED",
+                    "role": "HOST",
+                    "customParam": {},
+                    "id": "f437d376-d1fd-4a74-9357-2528b6c0af82"
+                },
+                {
+                    "deviceType": "cloud node",
+                    "label": "cloud node",
+                    "ip": "UNKNOWN",
+                    "softwareVersion": "UNKNOWN",
+
+                    "nodeType": "cloud node",
+                    "family": "cloud node",
+                    "platformId": "UNKNOWN",
+                    "tags": [
+                        "cloud node"
+                    ],
+                    "role": "cloud node",
+                    "roleSource": "AUTO",
+                    "customParam": {},
+                    "id": "fbf0d47a-7f8c-496f-b93d-dbe13ea600c0"
+                }
+            ],
+            "links": [
+                {
+                    "source": "2c682ec8-722c-4c1c-acb4-b8fba979e20a",
+                    "startPortID": "2b5ee818-f190-4f60-aa37-4272c081249d",
+                    "startPortName": "TenGigabitEthernet1/1/2",
+                    "startPortSpeed": "1000000",
+                    "target": "c619342b-da8b-4fcb-acc0-1f38430403cb",
+                    "endPortID": "d76e0a53-b2a1-486e-b147-318ad5bd415f",
+                    "endPortName": "TenGigabitEthernet1/0/24",
+                    "endPortSpeed": "1000000",
+                    "linkStatus": "up",
+
+                    "id": "103116"
+                },
+                {
+                    "source": "2c682ec8-722c-4c1c-acb4-b8fba979e20a",
+                    "startPortID": "ec1696a8-21f9-4331-b402-c550770c295a",
+                    "startPortName": "TenGigabitEthernet1/0/1",
+                    "startPortSpeed": "1000000",
+                    "target": "ca753ecd-ca80-45b9-851d-8a1c68c4cf0d",
+                    "endPortID": "b566b042-66ec-40bc-8ae6-dac4668f4543",
+                    "endPortName": "GigabitEthernet0/0/0",
+                    "endPortIpv4Address": "10.0.3.3",
+                    "endPortIpv4Mask": "255.255.255.248",
+                    "endPortSpeed": "1000000",
+                    "linkStatus": "up",
+
+                    "id": "103103"
+                },
+                {
+                    "source": "2c682ec8-722c-4c1c-acb4-b8fba979e20a",
+                    "startPortID": "b8d57391-8ff3-446b-a8e9-e829d7aa139f",
+                    "startPortName": "TenGigabitEthernet1/0/2",
+                    "startPortSpeed": "1000000",
+                    "target": "7fed2bdd-2046-4366-8079-9a32b3bd4b5d",
+                    "endPortID": "160b4ed4-cb70-4a44-91c6-9e3895cd03c8",
+                    "endPortName": "GigabitEthernet0/0",
+                    "endPortSpeed": "1000000",
+                    "linkStatus": "up",
+
+                    "id": "103112"
+                },
+                {
+                    "source": "420bc4e1-5f26-44b0-8368-74ec1053d728",
+                    "startPortID": "50063544-bdee-48e9-81a8-42321d3b64bd",
+                    "startPortName": "GigabitEthernet0/0/1.1",
+                    "startPortIpv4Address": "10.0.18.1",
+                    "startPortIpv4Mask": "255.255.255.248",
+                    "startPortSpeed": "1000000",
+                    "target": "25681b45-d54a-4430-a93c-c339662eaf68",
+                    "endPortID": "58f0c1ae-9561-411a-a8f1-174eb82c1207",
+                    "endPortName": "GigabitEthernet1/0/48",
+                    "endPortSpeed": "1000000",
+                    "linkStatus": "up",
+
+                    "id": "208277"
+                },
+                {
+                    "source": "c619342b-da8b-4fcb-acc0-1f38430403cb",
+                    "startPortID": "c0e054fe-8928-4f7d-81b1-55cdd8d2a9cf",
+                    "startPortName": "TenGigabitEthernet1/0/23",
+                    "startPortSpeed": "1000000",
+                    "target": "638563f5-c805-44a9-8161-ea225dacedd6",
+                    "endPortID": "a25e1f1a-d334-4ce2-b7d0-5ea46f60f750",
+                    "endPortName": "TenGigabitEthernet1/0/24",
+                    "endPortSpeed": "1000000",
+                    "linkStatus": "up",
+
+                    "id": "103110"
+                },
+                {
+                    "source": "2c682ec8-722c-4c1c-acb4-b8fba979e20a",
+                    "startPortID": "669864e4-ee59-4a5a-a274-743bfb97aa9a",
+                    "startPortName": "TenGigabitEthernet1/1/1",
+                    "startPortSpeed": "1000000",
+                    "target": "638563f5-c805-44a9-8161-ea225dacedd6",
+                    "endPortID": "c614ac4e-8f94-4283-a5cb-5bafde56d87e",
+                    "endPortName": "TenGigabitEthernet1/0/23",
+                    "endPortSpeed": "1000000",
+                    "linkStatus": "up",
+
+                    "id": "103109"
+                },
+                {
+                    "source": "2c682ec8-722c-4c1c-acb4-b8fba979e20a",
+                    "startPortID": "52cfdafb-8bf0-4810-b0a0-d37f3a432180",
+                    "target": "4fb2d0b9-8e07-4d44-aaa9-4737812c5a7d",
+                    "linkStatus": "UP",
+
+                },
+                {
+                    "source": "2c682ec8-722c-4c1c-acb4-b8fba979e20a",
+                    "startPortID": "52cfdafb-8bf0-4810-b0a0-d37f3a432180",
+                    "target": "502eba48-3dec-4799-bd3d-a064c56ef53b",
+                    "linkStatus": "UP",
+
+                },
+                {
+                    "source": "2c682ec8-722c-4c1c-acb4-b8fba979e20a",
+                    "startPortID": "52cfdafb-8bf0-4810-b0a0-d37f3a432180",
+                    "target": "548225f1-5b97-43a7-918f-1561cf54e6c8",
+                    "linkStatus": "UP",
+
+                },
+                {
+                    "source": "2c682ec8-722c-4c1c-acb4-b8fba979e20a",
+                    "startPortID": "52cfdafb-8bf0-4810-b0a0-d37f3a432180",
+                    "target": "636951c1-948d-48bd-880f-9b52be8f82ef",
+                    "linkStatus": "UP",
+
+                },
+                {
+                    "source": "2c682ec8-722c-4c1c-acb4-b8fba979e20a",
+                    "startPortID": "35de0164-b3d8-46f3-a5eb-02ae9a656bef",
+                    "target": "6e50bbd7-e596-435d-b107-9e51f9a44af0",
+                    "linkStatus": "UP",
+
+                },
+                {
+                    "source": "2c682ec8-722c-4c1c-acb4-b8fba979e20a",
+                    "startPortID": "52cfdafb-8bf0-4810-b0a0-d37f3a432180",
+                    "target": "724766cb-98ec-4dea-a014-9dcc6d46b864",
+                    "linkStatus": "UP",
+
+                },
+                {
+                    "source": "2c682ec8-722c-4c1c-acb4-b8fba979e20a",
+                    "startPortID": "52cfdafb-8bf0-4810-b0a0-d37f3a432180",
+                    "target": "755faa27-a657-4236-a92f-e637987607f1",
+                    "linkStatus": "UP",
+
+                },
+                {
+                    "source": "2c682ec8-722c-4c1c-acb4-b8fba979e20a",
+                    "startPortID": "a4b75516-f8ec-497c-98c5-6ac7b4ff9a27",
+                    "target": "7fd4399c-2bd3-488e-b612-e05656c183cc",
+                    "linkStatus": "UP",
+
+                },
+                {
+                    "source": "2c682ec8-722c-4c1c-acb4-b8fba979e20a",
+                    "startPortID": "52cfdafb-8bf0-4810-b0a0-d37f3a432180",
+                    "target": "9d1cb6f2-a2a7-461e-9921-1f1416eb1d61",
+                    "linkStatus": "UP",
+
+                },
+                {
+                    "source": "2c682ec8-722c-4c1c-acb4-b8fba979e20a",
+                    "startPortID": "52cfdafb-8bf0-4810-b0a0-d37f3a432180",
+                    "target": "a43c5694-17a7-4174-89d5-5afc1132cf9a",
+                    "linkStatus": "UP",
+
+                },
+                {
+                    "source": "2c682ec8-722c-4c1c-acb4-b8fba979e20a",
+                    "startPortID": "52cfdafb-8bf0-4810-b0a0-d37f3a432180",
+                    "target": "f437d376-d1fd-4a74-9357-2528b6c0af82",
+                    "linkStatus": "UP",
+
+                },
+                {
+                    "source": "fbf0d47a-7f8c-496f-b93d-dbe13ea600c0",
+                    "target": "3e95469f-3002-433a-bf16-2f26780e7842",
+                    "linkStatus": "up",
+
+                },
+                {
+                    "source": "fbf0d47a-7f8c-496f-b93d-dbe13ea600c0",
+                    "target": "420bc4e1-5f26-44b0-8368-74ec1053d728",
+                    "linkStatus": "up",
+
+                },
+                {
+                    "source": "fbf0d47a-7f8c-496f-b93d-dbe13ea600c0",
+                    "target": "7fed2bdd-2046-4366-8079-9a32b3bd4b5d",
+                    "linkStatus": "up",
+
+                },
+                {
+                    "source": "fbf0d47a-7f8c-496f-b93d-dbe13ea600c0",
+                    "target": "8ccaf057-3f50-4f4c-82e6-f71e24f16d5a",
+                    "linkStatus": "up",
+
+                },
+                {
+                    "source": "fbf0d47a-7f8c-496f-b93d-dbe13ea600c0",
+                    "target": "ca753ecd-ca80-45b9-851d-8a1c68c4cf0d",
+                    "linkStatus": "up",
+
+                }
+            ]
+        };
+        const network = new CiscoVis.Network(
+            'visualization',
+            [
+                {
+                    label: 'option 1',
+                    callback: (nodeId) => { console.log(nodeId) }
+                }, {
+                    label: 'option 2',
+                    callback: () => { console.log('2') }
+                }
+            ], {
+                apicEmData: new CiscoVis.ApicEM(ApicEMJson),
+            }
+        );
+        network.draw();
+    </script>
+</body>
+
+</html>

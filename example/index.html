@@ -150,9 +150,7 @@
                 greyOut: true
             }
         ];
-
-
-        // type around 2
+        
         for (let i = 100; i <= 105; i++) {
             let label = null;
 
@@ -178,16 +176,13 @@
                 edges
             }
         );
-        // network.nodes = nodes;
-        // network.edges = edges;
 
-        network.draw();
         const clusterOptionsByData = {
             joinCondition: function (childOptions) {
                 return childOptions.cid == 1;
             },
             clusterNodeProperties: {
-                id: 'cidCluster',
+                id: '1212',
                 label: 'hosts',
                 image: CiscoVis.NextFont.createSVG('hosts'),
                 shape: 'image'
@@ -197,6 +192,9 @@
             }
         };
         network.cluster(clusterOptionsByData);
+
+
+        network.draw();
     </script>
 </body>
 

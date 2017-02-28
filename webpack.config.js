@@ -3,11 +3,11 @@ const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 module.exports = {
     entry: {
-        index: './index.js',
+        index: path.resolve(__dirname, 'index.js'),
+        //vendors:['Network']
     },
     output: {
         path: path.join(__dirname, 'dist'),
-        //publicPath: '../dist',//有问题
         filename: 'ciscoVis.js',
         sourceMapFilename: 'ciscoVis.js.map',
         library: 'CiscoVis',
@@ -49,10 +49,11 @@ module.exports = {
     plugins: [
         new webpack.optimize.UglifyJsPlugin({
             compress: { warnings: false },
-            output: {//!!!
-                ascii_only: true,
-                quote_keys: true,
-            }
-        })
+            // output: {//!!!
+            //     ascii_only: true,
+            //     quote_keys: true,
+            // }
+        }),
+        //new webpack.optimize.CommonsChunkPlugin('vendors')
     ]
 }
