@@ -152,16 +152,9 @@
         ];
         
         for (let i = 100; i <= 105; i++) {
-            let label = null;
-
-            if (i === 102) {
-                label = 'error';
-            }
-
-            nodes.push({ id: i, label: '192.168.0.' + i, type: 'host', cid: 1 });
-            edges.push({ from: 2, to: i, label: label });
+            nodes.push({ id: i, label: '192.168.0.' + i, type: 'host' });
+            edges.push({ from: 2, to: i });
         }
-
 
         const network = new CiscoVis.Network('visualization',
             [{
@@ -173,27 +166,10 @@
             }],
             {
                 nodes,
-                edges
+                edges,
+                autoCluster:true //false
             }
         );
-
-        const clusterOptionsByData = {
-            joinCondition: function (childOptions) {
-                return childOptions.cid == 1;
-            },
-            clusterNodeProperties: {
-                id: '1212',
-                label: 'hosts',
-                image: CiscoVis.NextFont.createSVG('hosts'),
-                shape: 'image'
-            },
-            clusterEdgeProperties: {
-                //length: LENGTH_SERVER
-            }
-        };
-        network.cluster(clusterOptionsByData);
-
-
         network.draw();
     </script>
 </body>

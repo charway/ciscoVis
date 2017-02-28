@@ -518,23 +518,7 @@
             {
                 apicEmData: new CiscoVis.ApicEM(ApicEMJson),
             });
-
         network.draw();
-        const clusterOptionsByData = {
-            joinCondition: function (childOptions) {
-                return childOptions.cid == 1;
-            },
-            clusterNodeProperties: {
-                id: 'cidCluster',
-                label: 'hosts',
-                image: CiscoVis.NextFont.createSVG('hosts'),
-                shape: 'image'
-            },
-            clusterEdgeProperties: {
-                //length: LENGTH_SERVER
-            }
-        };
-        network.cluster(clusterOptionsByData);
     </script>
 </body>
 
